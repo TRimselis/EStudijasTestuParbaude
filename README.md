@@ -14,8 +14,6 @@ Projektā tiek izmantotas šādas bibliotēkas:
 
 - `selenium`: 
   - Automātiskai tīmekļa pārlūkprogrammas vadībai (Google Chrome) un autentifikācijai RTU sistēmā.
-  - Nepieciešama, jo RTU eStudijas platformai ir pieslēgšanās mehānisms ar JavaScript, kuru nevar pārvarēt ar vienkāršiem HTTP pieprasījumiem.
-
 - `datetime`: 
   - Lai apstrādātu termiņu datumus un aprēķinātu, cik laika atlicis līdz uzdevuma termiņam.
 ---
