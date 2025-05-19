@@ -42,29 +42,32 @@ for section in date_sections:
         except:
             continue
 
-print("\n---Testu saraksts---")
-for task, course, deadline_str in results:
-    try:
-        deadline = datetime.strptime(deadline_str, "%A, %d %B %Y %H:%M")
-        now = datetime.now()
-        delta = deadline - now
-        if delta.total_seconds() > 0:
-            days = delta.days
-            hours, remainder = divmod(delta.seconds, 3600)
-            minutes = remainder // 60
-            time_remaining = f"{days}d {hours}h {minutes}m"
-        else:
-            time_remaining = "Nokavēts"
+if not results:
+    print("\nNav neviena testa tuvākajā laikā")
+else:
+    print("\n---Testu saraksts---")
+    for course, task, deadline_str in results:
+        try:
+            deadline = datetime.strptime(deadline_str, "%A, %d %B %Y %H:%M")
+            now = datetime.now()
+            delta = deadline - now
+            if delta.total_seconds() > 0:
+                days = delta.days
+                hours, remainder = divmod(delta.seconds, 3600)
+                minutes = remainder // 60
+                time_remaining = f"{days}d {hours}h {minutes}m"
+            else:
+                time_remaining = "Nokavēts"
 
-    except Exception as e:
-        time_remaining = "Datuma kļūda"
-        print(f"Error parsing date: {e}")
+        except Exception as e:
+            time_remaining = "Datuma kļūda"
+            print(f"Error parsing date: {e}")
 
-    print(f"Uzdevums: {task}")
-    print(f"Kurss: {course}")
-    print(f"Termins: {deadline_str}")
-    print(f"Atlikušais laiks: {time_remaining}")
-    print()
+        print(f"Kurss: {course}")
+        print(f"Uzdevums: {task}")
+        print(f"Termins: {deadline_str}")
+        print(f"Atlikušais laiks: {time_remaining}")
+        print()
 
 
 driver.quit()
