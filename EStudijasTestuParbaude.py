@@ -20,7 +20,7 @@ WebDriverWait(driver, 15).until(
 )
 driver.get(adrese2)
 WebDriverWait(driver, 15).until(
-    lambda d: d.find_element(By.CSS_SELECTOR, '[data-region="event-list-content-date"]')
+    lambda d: d.find_element(By.CSS_SELECTOR, '[data-region="timeline-view"]')
 )
 
 results = []
